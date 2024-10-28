@@ -14,7 +14,7 @@ class AppBarAction extends StatelessWidget {
             child: child,
           );
         },
-        child: context.read<ThemeNotifier>().theme == ThemeData.light()
+        child: Provider.of<ThemeNotifier>(context).theme == ThemeData.light()
             ? const Icon(
                 Icons.wb_sunny,
                 key: Key('sunny'),

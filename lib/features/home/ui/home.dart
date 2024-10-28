@@ -1,4 +1,8 @@
+import 'package:flutter/services.dart';
+import 'package:lottie/lottie.dart';
+import 'package:resume/core_ui/widget/hover.dart';
 import 'package:resume/export.dart';
+import 'package:resume/features/about/about.dart';
 import 'package:resume/features/home/ui/widgets/home.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,9 +17,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   final List<TabModel> tabs = <TabModel>[
     TabModel(name: Column(children: [const Icon(Icons.home), Text(Constants.home)])),
     TabModel(
-        name: Column(children: [const Icon(Icons.handshake_outlined), Text(Constants.skills)])),
-    TabModel(
         name: Column(children: [const Icon(Icons.query_stats_outlined), Text(Constants.about)])),
+    TabModel(
+        name: Column(children: [const Icon(Icons.handshake_outlined), Text(Constants.skills)])),
     TabModel(name: Column(children: [const Icon(Icons.phone), Text(Constants.constacts)]))
   ];
 
@@ -27,45 +31,67 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         actions: const [AppBarAction()],
       ),
-      body: SizedBox(
-        height: 2000,
-        child: Column(
-          children: [
-            const Gap(30),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 3,
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(20),
-                      ),
-                      border: Border.all(color: context.primaryColor)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: TabBar(
-                        dividerHeight: 0,
-                        overlayColor: const WidgetStatePropertyAll(Colors.transparent),
-                        indicatorWeight: 10,
-                        controller: tabController,
-                        tabs: tabs.map((tab) => Tab(icon: tab.name)).toList()),
-                  ),
+      body: Stack(
+        children: [
+          SizedBox(
+            height: size.height,
+            width: size.width,
+            child: LottieBuilder.asset('back.json'),
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width / 3,
+              child: Container(
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          spreadRadius: 1,
+                          blurRadius: 400,
+                          color: context.primaryColor.withOpacity(0.1))
+                    ],
+                    color: context.primaryColor.withOpacity(.02),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                    border: Border.all(color: context.primaryColor)),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TabBar(
+                      dividerHeight: 0,
+                      indicatorColor: Theme.of(context).colorScheme.primary,
+                      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+                      indicatorWeight: 10,
+                      indicatorSize: TabBarIndicatorSize.label,
+                      controller: tabController,
+                      tabs: tabs
+                          .map((tab) => HoverBuilder(
+                              builder: (isHover) => Tab(
+                                    icon: tab.name,
+                                    iconMargin: EdgeInsets.all(isHover ? 10 : 2),
+                                  )))
+                          .toList()),
                 ),
-              )
-            ]),
-            SizedBox(
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: SizedBox(
               height: 700,
               child: TabBarView(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   controller: tabController,
-                  children: const [HomeView()]),
-            )
-          ],
-        ),
+                  children: const [HomeView(), AboutPage()]),
+            ),
+          )
+        ],
       ),
     );
   }
