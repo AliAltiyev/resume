@@ -5,6 +5,6 @@ class Constants {
   //Tab name
   static String home = 'Home';
   static String about = 'About';
-  static String skills = 'Skills';
+  static String skillsvswork = 'Work Experience';
   static String constacts = 'Contacts';
 }

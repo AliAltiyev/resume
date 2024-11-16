@@ -19,7 +19,8 @@ class _AboutPageState extends State<AboutPage> {
           Text(
             'I\'am Abdusselam. ',
             style: GoogleFonts.anton(
-                textStyle: const TextStyle(fontSize: 48), color: context.primaryColor),
+                textStyle: const TextStyle(fontSize: 48),
+                color: context.primaryColor),
           ),
           const Gap(100),
           Padding(
@@ -30,30 +31,43 @@ class _AboutPageState extends State<AboutPage> {
               children: [
                 const CircleAvatar(
                   maxRadius: 200,
-                  backgroundImage: AssetImage('me.jpeg'),
+                  backgroundImage: AssetImage('assets/me.jpeg'),
                 ),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: 1000,
-                      child: Text(
-                        '''I'm a Flutter Developer building digital solutions remotely from +15°C Minsk, Belarus.''',
-                        style: GoogleFonts.anton(
-                          textStyle:
-                              const TextStyle(fontSize: 48, textBaseline: TextBaseline.ideographic),
-                          color: context.primaryColor,
+                Container(
+                  margin: const EdgeInsets.all(30),
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(30)),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primaryFixed
+                          .withOpacity(0.2)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: 1000,
+                          child: Text(
+                            '''I'm a Flutter Developer building digital solutions remotely from +15°C Minsk, Belarus.''',
+                            style: GoogleFonts.anton(
+                              textStyle: const TextStyle(
+                                  fontSize: 48,
+                                  textBaseline: TextBaseline.ideographic),
+                              color: context.primaryColor,
+                            ),
+                          ),
                         ),
-                      ),
+                        const Gap(20),
+                        SizedBox(
+                          width: 1000,
+                          child: Text(
+                            '''Over the past 3 years, I've worked across mobile app development, web development, and OTT platforms. I’m proud to have contributed to several successful projects and helped scale digital experiences for diverse audiences.These days, I focus on developing feature-rich, high-performance apps at PythonOTT, an OTT platform enhancing the user experience of streaming services..''',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ),
+                      ],
                     ),
-                    const Gap(20),
-                    SizedBox(
-                      width: 1000,
-                      child: Text(
-                        '''Over the past 3 years, I've worked across mobile app development, web development, and OTT platforms. I’m proud to have contributed to several successful projects and helped scale digital experiences for diverse audiences.These days, I focus on developing feature-rich, high-performance apps at PythonOTT, an OTT platform enhancing the user experience of streaming services..''',
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),

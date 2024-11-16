@@ -18,13 +18,13 @@ class AppBarAction extends StatelessWidget {
             ? const Icon(
                 Icons.wb_sunny,
                 key: Key('sunny'),
-                color: Colors.white,
+                color: Colors.black,
                 size: 30,
               )
             : const Icon(
                 Icons.brightness_2,
                 key: Key('moon'),
-                color: Colors.black,
+                color: Colors.white,
                 size: 30,
               ),
       ),
