@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!--
+  <head>
+    <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
 
@@ -14,25 +14,61 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="$FLUTTER_BASE_HREF">
+    <base href="$FLUTTER_BASE_HREF" />
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta name="description" content="Flutter developer web site" />
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="resume">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="player" />
+    <link rel="apple-touch-icon" href="icons/icon_512.png" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>resume</title>
-  <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <script src="flutter_bootstrap.js" async></script>
-</body>
+    <title>Altyyev A</title>
+    <link rel="manifest" href="manifest.json" />
+
+    <style>
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      .loader {
+        border: 4px solid #ffffff;
+        border-top: 4px solid #3f51b5;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="flutter_bootstrap.js" async></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/hls.js@latest"
+      type="application/javascript"
+    ></script>
+  </body>
 </html>
